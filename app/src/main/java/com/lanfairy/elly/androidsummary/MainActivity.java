@@ -12,6 +12,7 @@ import android.widget.ListView;
 import com.lanfairy.elly.androidsummary.AsyncTask.AsyncTaskAty;
 import com.lanfairy.elly.androidsummary.ChooseAnimation.ChooseAnimationAty;
 import com.lanfairy.elly.androidsummary.DataStore.DataStoreAty;
+import com.lanfairy.elly.androidsummary.SMS.SMSActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,11 +22,13 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     private static final Class<?>[] ACTIVITY = {
+            SMSActivity.class,
             DataStoreAty.class,
             AsyncTaskAty.class,
             ChooseAnimationAty.class
     };
     private static final ArrayList TITLES = new ArrayList<String>(Arrays.asList(
+            "短信",
             "Android 数据存储",
             "async task",
             "choose animation"
