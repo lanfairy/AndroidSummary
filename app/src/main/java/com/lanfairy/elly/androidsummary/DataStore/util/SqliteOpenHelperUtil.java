@@ -15,7 +15,8 @@ public class SqliteOpenHelperUtil extends SQLiteOpenHelper {
     //oncreate方法是数据库第一次创建的时候会被调用;  特别适合做表结构的初始化,需要执行sql语句；SQLiteDatabase db可以用来执行sql语句
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table info (_id integer primary key autoincrement,name varchar(20))");
+//        db.execSQL("create table info (_id integer primary key autoincrement,name varchar(20))");
+        db.execSQL("create table info (_id integer primary key autoincrement,name varchar(20),phone varchar(11))");
         Log.v("数据库", "onCreate");
     }
 
@@ -23,5 +24,6 @@ public class SqliteOpenHelperUtil extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("alter table info add phone varchar(11)");
+        Log.v("数据库", "onCreate");
     }
 }

@@ -30,6 +30,10 @@ public class DataStoreAty extends AppCompatActivity  {
                         .commit();
                 break;
             case R.id.sqliteBtn:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.dataStoreAty, SqliteDBFragment.newInstance())
+                        .commit();
                 break;
         }
     }
