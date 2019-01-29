@@ -12,5 +12,15 @@
         android:layout_height="wrap_content"
         android:onClick="smsBackup"
         android:text="短信的备份"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="smsInsertMsg"
+        android:text="插入一条短信"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="querySms"
+        android:text="查询短信"/>
 
 </LinearLayout>
