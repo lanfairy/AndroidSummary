@@ -131,11 +131,7 @@ public class ContactActivity extends AppCompatActivity {
             }
         }
 
-//       List<Contact> contactList = QueryContactsUtils.queryContacts(ContactActivity.this);
-//        int i = 1;
-//        for (Contact contact: contactList) {
-//            Log.e("contact", contact.toString() +i++);
-//        }
+
 
 //        List<Contact> contactList =  QueryContactsUtils.getAllContact(ContactActivity.this);
 //        int i = 1;

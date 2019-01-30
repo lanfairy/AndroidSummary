@@ -30,7 +30,7 @@ import android.provider.ContactsContract.Data;
 
 //查询联系人的工具类
 public class QueryContactsUtils {
-    public static final String RAWCONTACTS = "content://com.android.contacts/raw_contacts";
+    /*public static final String RAWCONTACTS = "content://com.android.contacts/raw_contacts";
     public static final String DATA = "content://com.android.contacts/data";
 
     public static List<Contact> queryContacts(Context context) {
@@ -68,7 +68,7 @@ public class QueryContactsUtils {
         }
 
         return contactList;
-    }
+    }*/
 
 
     public static List<Contact> getAllContact(Context context) {
@@ -174,8 +174,6 @@ public class QueryContactsUtils {
 
         return list;
     }
-
-
 
 
     public static String getContactInfoJson(Context context) throws JSONException {
