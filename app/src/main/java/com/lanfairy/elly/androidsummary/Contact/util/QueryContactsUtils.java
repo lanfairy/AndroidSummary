@@ -540,21 +540,19 @@ public class QueryContactsUtils {
         resolver.insert(dataUri, values);
         values.clear();
 
+
         //把name phone email 插入到data表
         ContentValues nameValues = new ContentValues();
         nameValues.put("data1", contact.getName());
-
         //☆ ☆ ☆ ☆ ☆ 插入的数据要告诉数据库 属于第几条联系人  和  数据类型
         nameValues.put("raw_contact_id", contact_id);
-//        nameValues.put("mimetype", "vnd.android.cursor.item/name");
         nameValues.put("mimetype", StructuredName.CONTENT_ITEM_TYPE);
         resolver.insert(dataUri, nameValues);
 
-        //把phone号码 插入到data表
 
+        //把phone号码 插入到data表
         ContentValues phoneValues = new ContentValues();
         phoneValues.put("data1", contact.getMobile());
-//        phoneValues.put("mimetype", "vnd.android.cursor.item/phone_v2");
         phoneValues.put("mimetype", Phone.CONTENT_ITEM_TYPE);
         phoneValues.put("raw_contact_id", contact_id);
         resolver.insert(dataUri, phoneValues);
@@ -564,7 +562,6 @@ public class QueryContactsUtils {
         String email = "1264894052@qq.com";
         ContentValues emailValues = new ContentValues();
         emailValues.put("data1", contact.getPersonalEmail());
-//        emailValues.put("mimetype", "vnd.android.cursor.item/email_v2");
         emailValues.put("mimetype", Email.CONTENT_ITEM_TYPE);
         emailValues.put("raw_contact_id", contact_id);
         resolver.insert(dataUri, emailValues);
