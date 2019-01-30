@@ -1,23 +1,29 @@
 package com.lanfairy.elly.androidsummary.Contact.util;
 
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.util.Log;
 
 import com.lanfairy.elly.androidsummary.Contact.TheContact.Contact;
+import com.lanfairy.elly.androidsummary.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 
 import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.provider.ContactsContract.CommonDataKinds.Event;
+import android.provider.ContactsContract.CommonDataKinds.Photo;
 import android.provider.ContactsContract.CommonDataKinds.Im;
 import android.provider.ContactsContract.CommonDataKinds.Nickname;
 import android.provider.ContactsContract.CommonDataKinds.Note;
@@ -501,6 +507,68 @@ public class QueryContactsUtils {
         return contactData.toString();
     }
 
+
+    public static void insertContactInfo(Context context, Contact contact){
+        //在插入联系人id的时候 先查询一下 row_contact 一共有几条数据    加+1就是联系人的
+//        Uri uri = Uri.parse("content://com.android.contacts/raw_contacts");
+//        String uri2 = ContactsContract.RawContacts.CONTENT_URI.toString();
+//        String uri3 = ContactsContract.Profile.CONTENT_RAW_CONTACTS_URI.toString();
+//        Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
+        Uri uri = ContactsContract.RawContacts.CONTENT_URI;
+        Uri dataUri = Data.CONTENT_URI;
+        ContentResolver resolver = context.getContentResolver();
+        Cursor cursor = resolver.query(uri, null, null, null, null);
+        int count = cursor.getCount();
+        int contact_id = count + 1;
+
+
+        // 先往row_contact表  插入联系人的id (contact_id)
+        ContentValues values = new ContentValues();
+        values.put("contact_id", contact_id);
+        context.getContentResolver().insert(uri, values);
+        values.clear();
+
+        //头像
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
+        final ByteArrayOutputStream os = new ByteArrayOutputStream();
+        // 将Bitmap压缩成PNG编码，质量为100%存储
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
+        byte[] avatar =os.toByteArray();
+        values.put(Data.RAW_CONTACT_ID, contact_id);
+        values.put(Data.MIMETYPE, Photo.CONTENT_ITEM_TYPE);
+        values.put(Photo.PHOTO, avatar);
+        resolver.insert(dataUri, values);
+        values.clear();
+
+        //把name phone email 插入到data表
+        ContentValues nameValues = new ContentValues();
+        nameValues.put("data1", contact.getName());
+
+        //☆ ☆ ☆ ☆ ☆ 插入的数据要告诉数据库 属于第几条联系人  和  数据类型
+        nameValues.put("raw_contact_id", contact_id);
+//        nameValues.put("mimetype", "vnd.android.cursor.item/name");
+        nameValues.put("mimetype", StructuredName.CONTENT_ITEM_TYPE);
+        resolver.insert(dataUri, nameValues);
+
+        //把phone号码 插入到data表
+
+        ContentValues phoneValues = new ContentValues();
+        phoneValues.put("data1", contact.getMobile());
+//        phoneValues.put("mimetype", "vnd.android.cursor.item/phone_v2");
+        phoneValues.put("mimetype", Phone.CONTENT_ITEM_TYPE);
+        phoneValues.put("raw_contact_id", contact_id);
+        resolver.insert(dataUri, phoneValues);
+
+
+        //把email 插入到data表
+        String email = "1264894052@qq.com";
+        ContentValues emailValues = new ContentValues();
+        emailValues.put("data1", contact.getPersonalEmail());
+//        emailValues.put("mimetype", "vnd.android.cursor.item/email_v2");
+        emailValues.put("mimetype", Email.CONTENT_ITEM_TYPE);
+        emailValues.put("raw_contact_id", contact_id);
+        resolver.insert(dataUri, emailValues);
+    }
 
 }
 

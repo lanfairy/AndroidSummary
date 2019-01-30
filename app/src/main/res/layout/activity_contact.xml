@@ -28,5 +28,10 @@
         android:layout_height="wrap_content"
         android:onClick="queryContact"
         android:text="查询联系人"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="insertContact"
+        android:text="插入联系人"/>
 
 </LinearLayout>

@@ -139,12 +139,22 @@ public class ContactActivity extends AppCompatActivity {
 //            Log.e("contact", contact.toString() +i++);
 //        }
 
-        try {
-            QueryContactsUtils.getContactInfoJson(ContactActivity.this);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            QueryContactsUtils.getContactInfoJson(ContactActivity.this);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+
     }
 
 
+    public void insertContact(View view) {
+        Contact contact = new Contact();
+        contact.setName("这是测试名称");
+        contact.setTitle("iOS工程师");
+        contact.setMobile("1523697365");
+        contact.setPersonalEmail("1264894052@qq.com");
+        QueryContactsUtils.insertContactInfo(ContactActivity.this, contact);
+        Toast.makeText(ContactActivity.this, contact.toString(), Toast.LENGTH_LONG).show();
+    }
 }
