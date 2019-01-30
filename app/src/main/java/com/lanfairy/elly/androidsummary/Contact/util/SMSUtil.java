@@ -1,4 +1,4 @@
-package com.lanfairy.elly.androidsummary.SMS.util;
+package com.lanfairy.elly.androidsummary.Contact.util;
 
 import android.content.Context;
 import android.database.Cursor;

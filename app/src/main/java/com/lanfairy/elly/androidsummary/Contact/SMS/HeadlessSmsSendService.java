@@ -1,4 +1,4 @@
-package com.lanfairy.elly.androidsummary.SMS;
+package com.lanfairy.elly.androidsummary.Contact.SMS;
 
 import android.app.Service;
 import android.content.Intent;

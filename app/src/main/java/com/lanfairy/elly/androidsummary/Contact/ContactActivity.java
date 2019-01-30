@@ -1,41 +1,40 @@
-package com.lanfairy.elly.androidsummary.SMS;
+package com.lanfairy.elly.androidsummary.Contact;
 
-import android.content.ContentResolver;
+import android.Manifest;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
 import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Xml;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.lanfairy.elly.androidsummary.Contact.TheContact.Contact;
+import com.lanfairy.elly.androidsummary.Contact.util.QueryContactsUtils;
 import com.lanfairy.elly.androidsummary.R;
-import com.lanfairy.elly.androidsummary.SMS.util.SMSUtil;
+import com.lanfairy.elly.androidsummary.Contact.util.SMSUtil;
 
-import org.xmlpull.v1.XmlSerializer;
+import org.json.JSONException;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 
-public class SMSActivity extends AppCompatActivity {
+public class ContactActivity extends AppCompatActivity {
     private String mySmsPkg;
     private String defaultSmsPkg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sms);
+        setContentView(R.layout.activity_contact);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             defaultSmsPkg = Telephony.Sms.getDefaultSmsPackage(this);
@@ -59,7 +58,7 @@ public class SMSActivity extends AppCompatActivity {
     //点击按钮 往短信数据库里面插入一条记录
     public void smsInsertMsg(View view) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            if(mySmsPkg.equals(Telephony.Sms.getDefaultSmsPackage(SMSActivity.this))) {
+            if(mySmsPkg.equals(Telephony.Sms.getDefaultSmsPackage(ContactActivity.this))) {
                 //对短信数据库进行处理
                 String phoneNum = "110";
                 String bodyStr = "请您马上过来一趟 否则后果自负";
@@ -82,7 +81,7 @@ public class SMSActivity extends AppCompatActivity {
                     System.out.println("uriId " + uriId);
                 }
 
-                Toast.makeText(SMSActivity.this, "Insert a short Message.",
+                Toast.makeText(ContactActivity.this, "Insert a short Message.",
                         Toast.LENGTH_LONG).show();
 
 
@@ -121,4 +120,35 @@ public class SMSActivity extends AppCompatActivity {
         startActivity(intent);
         System.out.println("Recover default SMS App");
     }
+
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
+    public void queryContact(View view) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.READ_CONTACTS);
+            if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED){
+                requestPermissions(new String[]{Manifest.permission.WRITE_CONTACTS},REQUEST_CODE_ASK_PERMISSIONS);
+                return;
+            }
+        }
+
+//       List<Contact> contactList = QueryContactsUtils.queryContacts(ContactActivity.this);
+//        int i = 1;
+//        for (Contact contact: contactList) {
+//            Log.e("contact", contact.toString() +i++);
+//        }
+
+//        List<Contact> contactList =  QueryContactsUtils.getAllContact(ContactActivity.this);
+//        int i = 1;
+//        for (Contact contact: contactList) {
+//            Log.e("contact", contact.toString() +i++);
+//        }
+
+        try {
+            QueryContactsUtils.getContactInfoJson(ContactActivity.this);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

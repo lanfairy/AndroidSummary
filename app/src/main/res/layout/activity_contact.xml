@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SMS.SMSActivity">
+    tools:context=".Contact.ContactActivity">
     <Button
         android:id="@+id/sms_backup"
         android:layout_width="match_parent"
@@ -22,5 +22,11 @@
         android:layout_height="wrap_content"
         android:onClick="querySms"
         android:text="查询短信"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="queryContact"
+        android:text="查询联系人"/>
 
 </LinearLayout>
