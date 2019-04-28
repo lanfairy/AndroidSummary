@@ -2,14 +2,15 @@ package com.lanfairy.elly.androidsummary.DataStore.model;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SyncStatusObserver;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.lanfairy.elly.androidsummary.DataStore.util.SqliteOpenHelperUtil;
 
 public class InfoDao {
-
+    private static final String TAG = "InfoDao";
     public static class InfoBean {
         private String name;
         private String phone;
@@ -98,7 +99,8 @@ public class InfoDao {
                 int id = cursor.getInt(0);
                 String name_str = cursor.getString(1);
                 String phone = cursor.getString(2);
-                System.out.println("_id:" + id + "name:" + name_str + ";phone:" + phone);
+//                System.out.println("_id:" + id + "name:" + name_str + ";phone:" + phone);
+                Log.i(TAG, "query: "+"_id:" + id + "name:" + name_str + ";phone:" + phone);
             }
             //关闭结果集
             cursor.close();
@@ -108,3 +110,11 @@ public class InfoDao {
 
 
 }
+
+
+/**
+ * adb shell
+ * adb devices
+ *  adb -s 设备的序列号 shell
+ *  cd /data/data/com.lanfairy.elly.androidsummary/databases
+ * */

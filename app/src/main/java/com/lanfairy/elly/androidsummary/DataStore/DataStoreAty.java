@@ -18,7 +18,7 @@ public class DataStoreAty extends AppCompatActivity  {
         setContentView(R.layout.activity_data_store);
 
         SqliteOpenHelperUtil sqliteUtil = new SqliteOpenHelperUtil(DataStoreAty.this);
-        SQLiteDatabase database = sqliteUtil.getReadableDatabase();
+//        SQLiteDatabase database = sqliteUtil.getReadableDatabase();
     }
 
     public void btnOnClick(View view) {
@@ -26,19 +26,28 @@ public class DataStoreAty extends AppCompatActivity  {
             case R.id.sharedPreferenceBtn:
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.dataStoreAty,  SharedPreferenceFragment.newInstance())
+                        .addToBackStack(null)
+                        .replace(R.id.dataStoreAty,  SharedPreferenceFragment.getInstance())
                         .commit();
                 break;
             case R.id.sqliteBtn:
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.dataStoreAty, SqliteDBFragment.newInstance())
+                        .addToBackStack(null)
+                        .replace(R.id.dataStoreAty, SqliteDBFragment.getInstance())
+                        .commit();
+            case R.id.litepal_sqlite_Btn:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.dataStoreAty, LitePalSqliteDBFragment.getInstance())
                         .commit();
                 break;
         }
     }
 
-
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

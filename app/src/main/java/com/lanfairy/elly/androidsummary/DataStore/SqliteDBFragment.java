@@ -1,8 +1,6 @@
 package com.lanfairy.elly.androidsummary.DataStore;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,7 +11,6 @@ import android.widget.TextView;
 
 import com.lanfairy.elly.androidsummary.DataStore.model.InfoDao;
 import com.lanfairy.elly.androidsummary.DataStore.model.InfoDao.InfoBean;
-import com.lanfairy.elly.androidsummary.DataStore.util.SqliteOpenHelperUtil;
 import com.lanfairy.elly.androidsummary.R;
 
 
@@ -43,7 +40,7 @@ public class SqliteDBFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    public static SqliteDBFragment newInstance() {
+    public static SqliteDBFragment getInstance() {
         SqliteDBFragment fragment = new SqliteDBFragment();
 
         return fragment;

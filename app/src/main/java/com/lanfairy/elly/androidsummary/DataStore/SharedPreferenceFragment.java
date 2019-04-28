@@ -39,7 +39,7 @@ public class SharedPreferenceFragment extends Fragment {
     }
 
 
-    public static SharedPreferenceFragment newInstance() {
+    public static SharedPreferenceFragment getInstance() {
         SharedPreferenceFragment fragment = new SharedPreferenceFragment();
 
         return fragment;

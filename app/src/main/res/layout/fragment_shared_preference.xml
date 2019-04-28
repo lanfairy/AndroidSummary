@@ -1,59 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@android:color/white"
-    tools:context=".DataStore.SharedPreferenceFragment">
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <EditText
+        android:hint="@string/sharedPreferenceUserName"
+        android:id="@+id/userName"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:paddingLeft="10dp" />
 
-        <EditText
-            android:id="@+id/userName"
-            android:layout_width="match_parent"
+    <EditText
+        android:hint="@string/sharedPreferencePassWord"
+        android:id="@+id/passWord"
+        android:inputType="textPassword"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp" />
+
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             android:layout_height="wrap_content"
-            android:hint="@string/sharedPreferenceUserName"
-            android:paddingLeft="10dp" />
+            android:layout_width="wrap_content"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="@string/sharedPreference_login" />
 
-        <EditText
-            android:id="@+id/passWord"
-            android:layout_width="match_parent"
+        <CheckBox
+            android:id="@+id/cb_remember"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:hint="@string/sharedPreferencePassWord"
-            android:inputType="textPassword"
-            android:paddingLeft="10dp" />
+            android:layout_width="wrap_content"
+            android:paddingRight="10dp"
+            android:text="@string/sharedPreference_remberPassWord"
+            />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/btn_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
-                android:paddingLeft="50dp"
-                android:paddingRight="50dp"
-                android:text="@string/sharedPreference_login"/>
-            <CheckBox
-                android:id="@+id/cb_remember"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sharedPreference_remberPassWord"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:paddingRight="10dp"
+    </RelativeLayout>
 
-
-                />
-
-        </RelativeLayout>
-
-    </LinearLayout>
-
-</FrameLayout>
+</LinearLayout>

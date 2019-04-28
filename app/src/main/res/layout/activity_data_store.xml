@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".DataStore.DataStoreAty"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/dataStoreAty"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-
-
-    <Button
-        android:id="@+id/sharedPreferenceBtn"
-        android:layout_marginTop="20dp"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="btnOnClick"
-        android:text="@string/sharedPreferenceText"/>
-    <Button
-        android:id="@+id/sqliteBtn"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="btnOnClick"
-        android:text="@string/dataStoreSqliteText"/>
-</LinearLayout>
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/sharedPreferenceBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="btnOnClick"
+            android:text="@string/sharedPreferenceText" />
+
+        <Button
+            android:id="@+id/sqliteBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="btnOnClick"
+            android:text="@string/dataStoreSqliteText" />
+
+        <Button
+            android:id="@+id/litepal_sqlite_Btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="btnOnClick"
+            android:text="利用三方库LitePal操作数据库" />
+    </LinearLayout>
+
+</FrameLayout>
