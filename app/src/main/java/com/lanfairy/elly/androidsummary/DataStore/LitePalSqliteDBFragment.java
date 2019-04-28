@@ -67,7 +67,7 @@ public class LitePalSqliteDBFragment extends Fragment {
         //更新
         rootView.findViewById(R.id.update_data).setOnClickListener(v -> {
             Book book = new Book();
-            book.setPrice(20.99f);
+            book.setPrice(20.99);
             book.setPress("中央人民教育出版社");
             book.update(1);
         });
