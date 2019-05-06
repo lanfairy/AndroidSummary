@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
         android:name="org.litepal.LitePalApplication"
@@ -19,15 +19,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!-- BroadcastReceiver that listens for incoming SMS messages -->
+        <activity android:name=".Service.MyServiceDemoAty"></activity>
+
+        <service
+            android:name=".Service.MyService"
+            android:enabled="true"
+            android:exported="true" /> <!-- BroadcastReceiver that listens for incoming SMS messages -->
         <receiver
             android:name=".Contact.SMS.SmsReceiver"
             android:permission="android.permission.BROADCAST_SMS">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_DELIVER" />
             </intent-filter>
-        </receiver>
-        <!-- BroadcastReceiver that listens for incoming MMS messages -->
+        </receiver> <!-- BroadcastReceiver that listens for incoming MMS messages -->
         <receiver
             android:name=".Contact.SMS.MmsReceiver"
             android:permission="android.permission.BROADCAST_WAP_PUSH">
@@ -36,14 +40,14 @@
 
                 <data android:mimeType="application/vnd.wap.mms-message" />
             </intent-filter>
-        </receiver>
-        <!--Service that delivers messages from the phone "quick response"-->
+        </receiver> <!-- Service that delivers messages from the phone "quick response" -->
         <service
             android:name=".Contact.SMS.HeadlessSmsSendService"
             android:exported="true"
             android:permission="android.permission.SEND_RESPOND_VIA_MESSAGE">
             <intent-filter>
                 <action android:name="android.intent.action.RESPOND_VIA_MESSAGE" />
+
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data android:scheme="sms" />

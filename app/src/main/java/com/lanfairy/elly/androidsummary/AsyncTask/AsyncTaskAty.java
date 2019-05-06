@@ -37,8 +37,6 @@ public class AsyncTaskAty extends AppCompatActivity {
     @SuppressLint("StaticFieldLeak")
     private void readURL(String url){
         new AsyncTask<String, Float, String>(){
-
-
             @Override
             protected String doInBackground(String... strings) {
                 try {
@@ -62,6 +60,8 @@ public class AsyncTaskAty extends AppCompatActivity {
                    return builder.toString();
                 } catch (java.io.IOException e) {
                     e.printStackTrace();
+                }finally {
+
                 }
                 return null;
             }
