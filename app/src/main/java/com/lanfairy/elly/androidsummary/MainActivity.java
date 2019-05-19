@@ -14,6 +14,7 @@ import com.lanfairy.elly.androidsummary.ChooseAnimation.ChooseAnimationAty;
 import com.lanfairy.elly.androidsummary.DataStore.DataStoreAty;
 import com.lanfairy.elly.androidsummary.Contact.ContactActivity;
 import com.lanfairy.elly.androidsummary.Service.MyServiceDemoAty;
+import com.lanfairy.elly.androidsummary.UI.UIActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,6 +24,7 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     private static final Class<?>[] ACTIVITY = {
+            UIActivity.class,
             ContactActivity.class,
             DataStoreAty.class,
             AsyncTaskAty.class,
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
             MyServiceDemoAty.class
     };
     private static final ArrayList TITLES = new ArrayList<String>(Arrays.asList(
+            "UI相关demo",
             "短信 联系人",
             "Android 数据存储",
             "async task",
