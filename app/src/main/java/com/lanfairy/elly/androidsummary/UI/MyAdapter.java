@@ -14,6 +14,7 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final LayoutInflater inflater;
+    private ViewHolderOnClickListener listener;
     private Context context;
     //数据
     private List<Body> bodyList;
@@ -34,7 +35,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public int getItemViewType(int position) {
         int viewType = -1;
 
-        if (position == bodyList.size() ) {
+        if (position == bodyList.size()) {
             viewType = TYPE_FOOT;
         } else {
             viewType = TYPE_BODY;
@@ -62,11 +63,11 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         if (holder instanceof BodyViewHolder) {
 
-            bindBodyView((BodyViewHolder) holder,position);
+            bindBodyView((BodyViewHolder) holder, position);
 
         } else {
 
-            bindFootView((FootViewHolder) holder,position);
+            bindFootView((FootViewHolder) holder, position);
 
         }
 
@@ -74,16 +75,17 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
 
-
-
-
     //数据绑定
     private void bindBodyView(BodyViewHolder holder, final int position) {
 
         Body body = bodyList.get(position);
-        holder.tvBody.setText(body.getName()+"     hello1     "+body.getAge());
-
-
+        holder.tvBody.setText(body.getName() + "     hello1     " + body.getAge());
+        holder.mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyAdapter.this.onItemViewClick(v,position);
+            }
+        });
 
     }
 
@@ -96,21 +98,31 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return bodyList.size() + 1;
     }
 
+    public void setViewHolderOnClickListener(ViewHolderOnClickListener listener) {
+        this.listener = listener;
+    }
 
-
+    private void onItemViewClick(View v,int position) {
+        if (this.listener != null)
+            listener.onItemViewClick(v, position);
+    }
 
     class BodyViewHolder extends RecyclerView.ViewHolder {
 
-
+        private final View mView;
         private final TextView tvBody;
 
         public BodyViewHolder(View itemView) {
             super(itemView);
-            tvBody = (TextView) itemView.findViewById(R.id.tv_body);
+            mView = itemView;
 
+            tvBody = (TextView) itemView.findViewById(R.id.tv_body);
         }
     }
 
+    public interface ViewHolderOnClickListener {
+        void onItemViewClick(View v, int position);
+    }
 
     class FootViewHolder extends RecyclerView.ViewHolder {
 

@@ -1,11 +1,15 @@
 package com.lanfairy.elly.androidsummary.UI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import com.lanfairy.elly.androidsummary.R;
+import com.lanfairy.elly.androidsummary.UI.Acvivity.LoadViewActivity;
+import com.lanfairy.elly.androidsummary.UI.Acvivity.RevealDrawableActivity;
 
 import java.util.ArrayList;
 
@@ -34,6 +38,17 @@ public class UIActivity extends AppCompatActivity {
         mPullRefreshRecyclerView = findViewById(R.id.real_pull_refresh_view);
         mLayoutManager = new LinearLayoutManager(this);
         mMyAdapter = new MyAdapter(this, mBodies);
+        mMyAdapter.setViewHolderOnClickListener(new MyAdapter.ViewHolderOnClickListener() {
+            @Override
+            public void onItemViewClick(View v, int position) {
+                if (position == 0)
+                    UIActivity.this.startActivity(new Intent(UIActivity.this, LoadViewActivity.class));
+                if (position == 1) {
+                    UIActivity.this.startActivity(new Intent(UIActivity.this, RevealDrawableActivity.class));
+                }
+
+            }
+        });
         mPullRefreshRecyclerView.setLayoutManager(mLayoutManager);
         mPullRefreshRecyclerView.setAdapter(mMyAdapter);
         mPullRefreshRecyclerView.setOnPullListener(new PullRefreshRecyclerView.OnPullListener() {
@@ -53,7 +68,7 @@ public class UIActivity extends AppCompatActivity {
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        for (int i = 0; i<3; i++) {
+                        for (int i = 0; i < 3; i++) {
                             mBodies.add(new Body("上拉加载的数据", 666));
                         }
                         mPullRefreshRecyclerView.loadMroeFinish();
