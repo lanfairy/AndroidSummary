@@ -22,7 +22,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = MainActivity.class.getSimpleName();
     private static final Class<?>[] ACTIVITY = {
             UIActivity.class,
             ContactActivity.class,
@@ -55,7 +60,35 @@ public class MainActivity extends AppCompatActivity {
 
 
 //        fileTest();
+        testRx();
     }
+
+    private void testRx() {
+        Observable.fromArray(
+                1,2,3,4,5
+        ).subscribe(new Observer<Integer>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                Log.i(TAG, "onSubscribe");
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+                Log.i(TAG, "onNext: "+integer);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.i(TAG, "onNext: "+e.getMessage());
+            }
+
+            @Override
+            public void onComplete() {
+                Log.i(TAG, "onComplete ");
+            }
+        });
+    }
+
     static final String LOGTAG = "文件操作";
     private void fileTest() {
         File file = new File("/storage/emulated/0/Test/test.txt");

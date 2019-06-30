@@ -10,6 +10,7 @@ import android.view.View;
 import com.lanfairy.elly.androidsummary.R;
 import com.lanfairy.elly.androidsummary.UI.Acvivity.LoadViewActivity;
 import com.lanfairy.elly.androidsummary.UI.Acvivity.RevealDrawableActivity;
+import com.lanfairy.elly.androidsummary.UI.Acvivity.RxAndroid;
 
 import java.util.ArrayList;
 
@@ -46,6 +47,9 @@ public class UIActivity extends AppCompatActivity {
                 if (position == 1) {
                     UIActivity.this.startActivity(new Intent(UIActivity.this, RevealDrawableActivity.class));
                 }
+                if (position == 2){
+                    UIActivity.this.startActivity(new Intent(UIActivity.this, RxAndroid.class));
+                }
 
             }
         });
@@ -79,9 +83,18 @@ public class UIActivity extends AppCompatActivity {
     }
 
     private void initData() {
+        String names[] = {
+                "LoadViewActivity",
+                "RevealDrawableActivity",
+                "RxAndroid"
+
+        };
         mBodies = new ArrayList<>();
+        String name = null;
         for (int j = 0; j < 17; j++) {
-            mBodies.add(new Body("test" + j * 5, 100));
+            name = "test" + j * 5;
+            if (j<names.length)name = names[j];
+            mBodies.add(new Body(name, 100));
         }
 
 
