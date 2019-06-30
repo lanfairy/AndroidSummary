@@ -16,12 +16,16 @@ import com.lanfairy.elly.androidsummary.R;
 import com.lanfairy.elly.androidsummary.ChooseAnimation.dummy.DummyContent;
 import com.lanfairy.elly.androidsummary.ChooseAnimation.dummy.DummyContent.DummyItem;
 
+import org.xutils.view.annotation.ContentView;
+import org.xutils.x;
+
 /**
  * A fragment representing a list of Items.
  * <p/>
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
+@ContentView(R.layout.fragment_chooseanimation_list)
 public class ChooseAnimationFragment extends Fragment {
 
     // TODO: Customize parameter argument names
@@ -59,8 +63,8 @@ public class ChooseAnimationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_chooseanimation_list, container, false);
-
+//        View view = inflater.inflate(R.layout.fragment_chooseanimation_list, container, false);
+        View view = x.view().inject(this, inflater, container);
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -74,7 +78,7 @@ public class ChooseAnimationFragment extends Fragment {
             recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
                 @Override
                 public boolean onInterceptTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
-                    if (motionEvent!=null) {
+                    if (motionEvent != null) {
                         View view = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
                         if (view != null) {
                             ChooseAnimationRecyclerViewAdapter.ViewHolder holder = (ChooseAnimationRecyclerViewAdapter.ViewHolder) recyclerView.getChildViewHolder(view);

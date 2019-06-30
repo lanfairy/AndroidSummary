@@ -12,9 +12,14 @@ import com.lanfairy.elly.androidsummary.UI.Acvivity.LoadViewActivity;
 import com.lanfairy.elly.androidsummary.UI.Acvivity.RevealDrawableActivity;
 import com.lanfairy.elly.androidsummary.UI.Acvivity.RxAndroid;
 
-import java.util.ArrayList;
+import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
+import java.util.ArrayList;
+@ContentView(R.layout.activity_ui)
 public class UIActivity extends AppCompatActivity {
+    @ViewInject(R.id.real_pull_refresh_view)
     private PullRefreshRecyclerView mPullRefreshRecyclerView;
 
     private ArrayList<Body> mBodies;
@@ -26,17 +31,19 @@ public class UIActivity extends AppCompatActivity {
 
     int i = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ui);
+//        setContentView(R.layout.activity_ui);
+        x.view().inject(this);
         initData();
         initView();
 
     }
 
     private void initView() {
-        mPullRefreshRecyclerView = findViewById(R.id.real_pull_refresh_view);
+//        mPullRefreshRecyclerView = findViewById(R.id.real_pull_refresh_view);
         mLayoutManager = new LinearLayoutManager(this);
         mMyAdapter = new MyAdapter(this, mBodies);
         mMyAdapter.setViewHolderOnClickListener(new MyAdapter.ViewHolderOnClickListener() {

@@ -33,7 +33,7 @@ public class DownloadUtils {
         return Observable.create(new ObservableOnSubscribe<byte[]>() {
             @Override
             public void subscribe(ObservableEmitter<byte[]> emitter) throws Exception {
-//                if (!emitter.isDisposed()) {
+                if (!emitter.isDisposed()) {
                     Request request = new Request.Builder().url(path).build();
                     client.newCall(request).enqueue(new Callback() {
                         @Override
@@ -54,7 +54,7 @@ public class DownloadUtils {
                         }
                     });
                 }
-//            }
+            }
         });
     }
 

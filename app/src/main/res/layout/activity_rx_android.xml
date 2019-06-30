@@ -15,9 +15,24 @@
     android:adjustViewBounds="true"
     android:scaleType="center"/>
     <Button
+        android:id="@+id/btn_download_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="下载图片"
-        android:onClick="dowloadImg"/>
+        />
+    <Button
+        android:id="@+id/btn_download_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/btn_download_img"
+        android:text="xUtils3"
+        />
+    <Button
+        android:id="@+id/btn_download_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/btn_download_one"
+        android:text="xUtils3"
+        />
 </android.support.constraint.ConstraintLayout>
