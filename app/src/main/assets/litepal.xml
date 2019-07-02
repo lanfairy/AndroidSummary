@@ -4,7 +4,7 @@
     <version value="1" />
 
     <list>
-        <mapping class="com.lanfairy.elly.androidsummary.DataStore.model.Book"></mapping>
+        <mapping class="com.lanfairy.elly.androidsummary.dataStore.model.Book"></mapping>
     </list>
 
 

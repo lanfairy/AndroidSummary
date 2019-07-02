@@ -2,9 +2,11 @@ package com.lanfairy.elly.androidsummary;
 
 import android.app.Application;
 
-import org.xutils.x;
+import com.lanfairy.elly.androidsummary.aop.annotation.BehaviorTrace;
 
+import org.xutils.x;
 public class SummaryApplication extends Application {
+    @BehaviorTrace("SummaryApplication")
     @Override
     public void onCreate() {
         super.onCreate();

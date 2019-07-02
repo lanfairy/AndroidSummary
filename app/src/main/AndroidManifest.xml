@@ -20,25 +20,25 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.Acvivity.RxAndroid"></activity>
-        <activity android:name=".UI.Acvivity.LoadViewActivity" />
-        <activity android:name=".UI.UIActivity" />
-        <activity android:name=".Service.MyServiceDemoAty" />
-        <activity android:name=".UI.Acvivity.RevealDrawableActivity" />
+        <activity android:name=".ui.Acvivity.RxAndroid"></activity>
+        <activity android:name=".ui.Acvivity.LoadViewActivity" />
+        <activity android:name=".ui.UIActivity" />
+        <activity android:name=".service.MyServiceDemoAty" />
+        <activity android:name=".ui.Acvivity.RevealDrawableActivity" />
 
         <service
-            android:name=".Service.MyService"
+            android:name=".service.MyService"
             android:enabled="true"
             android:exported="true" /> <!-- BroadcastReceiver that listens for incoming SMS messages -->
         <receiver
-            android:name=".Contact.SMS.SmsReceiver"
+            android:name=".contact.SMS.SmsReceiver"
             android:permission="android.permission.BROADCAST_SMS">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_DELIVER" />
             </intent-filter>
         </receiver> <!-- BroadcastReceiver that listens for incoming MMS messages -->
         <receiver
-            android:name=".Contact.SMS.MmsReceiver"
+            android:name=".contact.SMS.MmsReceiver"
             android:permission="android.permission.BROADCAST_WAP_PUSH">
             <intent-filter>
                 <action android:name="android.provider.Telephony.WAP_PUSH_DELIVER" />
@@ -47,7 +47,7 @@
             </intent-filter>
         </receiver> <!-- Service that delivers messages from the phone "quick response" -->
         <service
-            android:name=".Contact.SMS.HeadlessSmsSendService"
+            android:name=".contact.SMS.HeadlessSmsSendService"
             android:exported="true"
             android:permission="android.permission.SEND_RESPOND_VIA_MESSAGE">
             <intent-filter>
@@ -62,7 +62,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".Contact.ContactActivity">
+        <activity android:name=".contact.ContactActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <action android:name="android.intent.action.SENDTO" />
@@ -83,9 +83,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AsyncTask.AsyncTaskAty" />
-        <activity android:name=".DataStore.DataStoreAty" />
-        <activity android:name=".ChooseAnimation.ChooseAnimationAty" />
+        <activity android:name=".asyncTask.AsyncTaskAty" />
+        <activity android:name=".dataStore.DataStoreAty" />
+        <activity android:name=".chooseAnimation.ChooseAnimationAty" />
     </application>
 
 </manifest>

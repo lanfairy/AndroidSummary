@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.UIActivity">
-<com.lanfairy.elly.androidsummary.UI.PullRefreshRecyclerView
+    tools:context=".ui.UIActivity">
+<com.lanfairy.elly.androidsummary.ui.PullRefreshRecyclerView
     android:id="@+id/real_pull_refresh_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />

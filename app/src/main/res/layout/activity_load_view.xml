@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".UI.Acvivity.LoadViewActivity">
+    tools:context=".ui.Acvivity.LoadViewActivity">
 
-    <com.lanfairy.elly.androidsummary.UI.LoadView.LoadView
+    <com.lanfairy.elly.androidsummary.ui.LoadView.LoadView
         android:layout_width="200dp"
         android:layout_height="200dp" />
 
-    <com.lanfairy.elly.androidsummary.UI.LoadView.CircleLoadingView
+    <com.lanfairy.elly.androidsummary.ui.LoadView.CircleLoadingView
         android:layout_width="100dp"
         android:layout_height="100dp" />
 </LinearLayout>

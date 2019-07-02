@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.Acvivity.RevealDrawableActivity"
+    tools:context=".ui.Acvivity.RevealDrawableActivity"
     android:orientation="vertical">
-<com.lanfairy.elly.androidsummary.UI.View.GallaryHorizonalScrollView
+<com.lanfairy.elly.androidsummary.ui.View.GallaryHorizonalScrollView
     android:id="@+id/hsv"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

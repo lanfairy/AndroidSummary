@@ -9,12 +9,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.lanfairy.elly.androidsummary.AsyncTask.AsyncTaskAty;
-import com.lanfairy.elly.androidsummary.ChooseAnimation.ChooseAnimationAty;
-import com.lanfairy.elly.androidsummary.DataStore.DataStoreAty;
-import com.lanfairy.elly.androidsummary.Contact.ContactActivity;
-import com.lanfairy.elly.androidsummary.Service.MyServiceDemoAty;
-import com.lanfairy.elly.androidsummary.UI.UIActivity;
+import com.lanfairy.elly.androidsummary.asyncTask.AsyncTaskAty;
+import com.lanfairy.elly.androidsummary.chooseAnimation.ChooseAnimationAty;
+import com.lanfairy.elly.androidsummary.dataStore.DataStoreAty;
+import com.lanfairy.elly.androidsummary.contact.ContactActivity;
+import com.lanfairy.elly.androidsummary.service.MyServiceDemoAty;
+import com.lanfairy.elly.androidsummary.ui.UIActivity;
 
 import java.io.File;
 import java.io.IOException;
