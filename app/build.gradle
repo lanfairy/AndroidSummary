@@ -38,6 +38,7 @@ dependencies {
 
     //AOP
     implementation 'org.aspectj:aspectjrt:1.9.0'
+    implementation 'com.jakewharton.rxbinding:rxbinding:1.0.1'
 }
 
 //AOP  START
@@ -89,3 +90,4 @@ variants.all { variant ->
     }
 }
 //AOP  END
+

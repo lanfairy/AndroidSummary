@@ -1,4 +1,4 @@
-package com.lanfairy.elly.androidsummary.aop;
+package com.lanfairy.elly.androidsummary.aop.dynamic_proxy;
 
 import android.content.Context;
 import android.content.SharedPreferences;

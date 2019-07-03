@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".aop.dynamic_proxy.AOPActivity"
+    tools:context=".aop.aspect.AOPAspectActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -9,19 +9,25 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="我的淘宝"
+        android:text="AspectJ我的淘宝"
         android:onClick="me"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="购买"
+        android:text="AspectJ购买"
         android:onClick="play"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="查看"
+        android:text="AspectJ查看"
         android:onClick="look"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AspectJ检查权限"
+        android:onClick="permission"/>
+
 
 </LinearLayout>

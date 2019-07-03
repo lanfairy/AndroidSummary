@@ -7,5 +7,6 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface LoginAOP {
+public @interface SecurityCheckAnnotation {
+    public String declaredPermission();  //declarePermssion是一个函数，其实代表了注解里的参数
 }

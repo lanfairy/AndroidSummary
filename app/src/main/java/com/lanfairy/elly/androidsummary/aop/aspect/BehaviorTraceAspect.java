@@ -1,18 +1,14 @@
 package com.lanfairy.elly.androidsummary.aop.aspect;
 
-import android.os.SystemClock;
 import android.util.Log;
 
 import com.lanfairy.elly.androidsummary.aop.annotation.BehaviorTrace;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-
-import java.util.Random;
 
 @Aspect
 public class BehaviorTraceAspect {

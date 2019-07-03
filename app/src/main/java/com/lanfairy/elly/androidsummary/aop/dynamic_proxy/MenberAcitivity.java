@@ -3,6 +3,8 @@ package com.lanfairy.elly.androidsummary.aop.dynamic_proxy;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.lanfairy.elly.androidsummary.R;
+
 public class MenberAcitivity extends AppCompatActivity {
 
     @Override

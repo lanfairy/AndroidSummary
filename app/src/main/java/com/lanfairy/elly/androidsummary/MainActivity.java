@@ -9,6 +9,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.lanfairy.elly.androidsummary.aop.annotation.BehaviorTrace;
+import com.lanfairy.elly.androidsummary.aop.annotation.LoginAOP;
+import com.lanfairy.elly.androidsummary.aop.aspect.AOPAspectActivity;
+import com.lanfairy.elly.androidsummary.aop.dynamic_proxy.AOPActivity;
 import com.lanfairy.elly.androidsummary.asyncTask.AsyncTaskAty;
 import com.lanfairy.elly.androidsummary.chooseAnimation.ChooseAnimationAty;
 import com.lanfairy.elly.androidsummary.dataStore.DataStoreAty;
@@ -34,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
             DataStoreAty.class,
             AsyncTaskAty.class,
             ChooseAnimationAty.class,
-            MyServiceDemoAty.class
+            MyServiceDemoAty.class,
+            AOPActivity.class,
+            AOPAspectActivity.class
     };
     private static final ArrayList TITLES = new ArrayList<String>(Arrays.asList(
             "UI相关demo",
@@ -42,9 +48,12 @@ public class MainActivity extends AppCompatActivity {
             "Android 数据存储",
             "async task",
             "choose animation",
-            "Service 服务"
+            "Service 服务",
+            "动态代理实现面向切面编程AOP",
+            "AspectJ实现面向切面编程AOP"
     ));
     private ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 //        fileTest();
         testRx();
     }
-
+    @BehaviorTrace("testRx")
     private void testRx() {
         Observable.fromArray(
                 1,2,3,4,5
@@ -115,4 +124,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+
 }

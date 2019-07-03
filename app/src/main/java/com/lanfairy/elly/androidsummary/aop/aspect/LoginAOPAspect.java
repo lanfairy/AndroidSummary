@@ -1,4 +1,59 @@
 package com.lanfairy.elly.androidsummary.aop.aspect;
 
+import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
+import com.lanfairy.elly.androidsummary.SummaryApplication;
+import com.lanfairy.elly.androidsummary.aop.annotation.BehaviorTrace;
+import com.lanfairy.elly.androidsummary.aop.dynamic_proxy.SharePreferenceUtil;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
+
+@Aspect
 public class LoginAOPAspect {
+    private static final String TAG = LoginAOPAspect.class.getSimpleName();
+
+    //定义切面的规则
+    //1、就在原来的应用中那些注解的地方放到当前切面进行处理
+    //execution（注解名   注解用的地方）
+    @Pointcut("execution(@com.lanfairy.elly.androidsummary.aop.annotation.LoginAOP * *(..))")
+    public void methodLoginAOPAspect() {
+    }
+
+    //2、对进入切面的内容如何处理
+    //@Before 在切入点之前运行
+//    @After("methodAnnottatedWithBehaviorTrace()")
+    //@Around 在切入点前后都运行  这种情况  无法断点调试
+//    @Before("methodLoginAOPAspect()")
+    @Around("methodLoginAOPAspect()")
+    public Object weaveJoinPoint1(ProceedingJoinPoint joinPoint) throws Throwable {
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        String className = methodSignature.getDeclaringType().getSimpleName();
+        String methodName = methodSignature.getName();
+
+        Log.i(TAG, String.format("Login功能：%s类的%s方法执行了", className, methodName));
+        Object[] args = joinPoint.getArgs();
+        Context context = (Context)args[0];
+
+        Object result = null;
+        if (SharePreferenceUtil.getBooleanSp(SharePreferenceUtil.IS_LOGIN, context)){
+            result = joinPoint.proceed();
+        }else {
+            context.startActivity(new Intent(context, LoginAspectActivity.class));
+        }
+
+
+        Log.i(TAG, "args: "+args);
+        return result;
+    }
 }
