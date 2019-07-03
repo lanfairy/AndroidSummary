@@ -1,8 +1,10 @@
 package com.lanfairy.elly.androidsummary.aop.aspect;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -43,17 +45,26 @@ public class LoginAOPAspect {
 
         Log.i(TAG, String.format("Login功能：%s类的%s方法执行了", className, methodName));
         Object[] args = joinPoint.getArgs();
-        Context context = (Context)args[0];
-
+        Context context = (Context) args[0];
+        //当切入点是在Acitity 或 Fragment 或 view 中时 可通过下面获取 减少切入函数参数
+        /*
+        if (joinPoint.getThis() instanceof Activity) {
+            context = (Activity) joinPoint.getThis();
+        } else if (joinPoint.getThis() instanceof Fragment) {
+            context = ((Fragment) joinPoint.getThis()).getActivity();
+        } else if (joinPoint.getThis() instanceof View) {
+            context = ((View) joinPoint.getThis()).getContext();
+        }
+        */
         Object result = null;
-        if (SharePreferenceUtil.getBooleanSp(SharePreferenceUtil.IS_LOGIN, context)){
+        if (SharePreferenceUtil.getBooleanSp(SharePreferenceUtil.IS_LOGIN, context)) {
             result = joinPoint.proceed();
-        }else {
+        } else {
             context.startActivity(new Intent(context, LoginAspectActivity.class));
         }
 
 
-        Log.i(TAG, "args: "+args);
+        Log.i(TAG, "args: " + args);
         return result;
     }
 }
