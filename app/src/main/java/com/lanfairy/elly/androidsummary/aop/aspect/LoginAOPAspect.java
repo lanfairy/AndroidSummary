@@ -1,23 +1,14 @@
 package com.lanfairy.elly.androidsummary.aop.aspect;
 
-import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
-import com.lanfairy.elly.androidsummary.SummaryApplication;
-import com.lanfairy.elly.androidsummary.aop.annotation.BehaviorTrace;
 import com.lanfairy.elly.androidsummary.aop.dynamic_proxy.SharePreferenceUtil;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 
@@ -67,4 +58,10 @@ public class LoginAOPAspect {
         Log.i(TAG, "args: " + args);
         return result;
     }
+
+
+    /**
+     * aop 统计时 需要切入点函数内的某个数值时  重新写个函数 将需要的数值以函数参数的形式传递给aspect
+     * 通过jointPoint.getArgs获取
+     */
 }
